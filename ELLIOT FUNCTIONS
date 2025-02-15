@@ -1,0 +1,32 @@
+int printMenu()
+{
+	char* message1 = "Welcome to the";
+	char* message2 = RED "IMAGINATION STATION\n" RESET;
+	char* message3 = GREEN "1. USER MANUAL\n" RESET;
+	char* message4 = BLUE "2. OPEN CANVAS\n" RESET;
+	char* message5 = YELLOW "3. EXIT\n" RESET;
+	char* message6 = "Please Enter Your Selection: ";
+	int option = 0;
+	printf("%100s %s", message1, message2);
+	printf("%120s\n", message3);
+	printf("%120s\n", message4);
+	printf("%115s\n", message5);
+	printf("%110s", message6);
+	scanf("%d", &option);
+
+	return option;
+}
+
+void printInstructions()
+{
+	printf("Welcome to IMAGINAITON STATION, your new FAVORITE command line art canvas!\n");
+	printf("To draw on the canvas, you can move your cursor around, by using the W, A, S, and D keys.\n");
+	printf("The inputs go as follows:\nW = Up\nA = Left\nS = Down\nD = Right\nQ = Exit\nP = Place\n");
+	printf("Once you select a cell to color, you will be given a prompt to enter a color\n");
+	printf("You also have the option to insert either a circle, square/rectangle, or triangle\n");
+	printf("If selected, you will have be able to choose a center point, and dimensions of your shape\n");
+	printf("After selecting the center and size, you will also be asked to choose a color\n");
+
+	system("pause");
+	system("cls");
+}
