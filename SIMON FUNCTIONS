@@ -1,14 +1,13 @@
-
 int get_arrow_input()
 {
-	printf("Press an WASD key (use Q to exit):\n");
+	printf("Press an WASD key to move and P to place (use Q to exit):\n");
 	//initilize input
 	char input = '\0';
 
 	//Get and verify user input
 	do{
 		scanf("%c", &input);
-	} while (input != 'w' && input != 'W' && input != 'a' && input != 'A' && input != 's' && input != 'S' && input != 'd' && input != 'D' && input != 'Q' && input != 'q');
+	} while (input != 'w' && input != 'W' && input != 'a' && input != 'A' && input != 's' && input != 'S' && input != 'd' && input != 'D' && input != 'Q' && input != 'q' && input != 'P' && input != 'p');
 	
 	//return a direction int
 	if (input == 'Q' || input == 'q') {
@@ -25,5 +24,8 @@ int get_arrow_input()
 	}
 	else if (input == 'a' || input == 'A') {
 		return 4;
+	}
+	else if (input == 'p' || input == 'P') {
+		return 5;
 	}
 }
