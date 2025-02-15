@@ -1,3 +1,10 @@
+//HEADER AND STRUCTS
+typedef struct cell {
+	int X;
+	int Y;
+	char symbol;
+}Cell;
+
 int get_arrow_input()
 {
 	printf("Press an WASD key to move and P to place (use Q to exit):\n");
@@ -28,4 +35,69 @@ int get_arrow_input()
 	else if (input == 'p' || input == 'P') {
 		return 5;
 	}
+}
+
+void make_circle(Cell canvas[][50], int radius, Cell center, char newsymbol) {
+	
+	int decision = 0;
+
+	decision = 3 - (2 * radius);
+
+	Cell circle = { 0, radius, '\0'};
+	
+	while (circle.X <= circle.Y) {
+		canvas[circle.Y + center.X][circle.X + center.Y].symbol = newsymbol;
+		canvas[circle.X + center.X][circle.Y + center.Y].symbol = newsymbol;
+		canvas[-circle.X + center.X][circle.Y + center.Y].symbol = newsymbol;
+		canvas[-circle.Y + center.X][circle.X + center.Y].symbol = newsymbol;
+		canvas[-circle.Y + center.X][-circle.X + center.Y].symbol = newsymbol;
+		canvas[-circle.X + center.X][-circle.Y + center.Y].symbol = newsymbol;
+		canvas[circle.X + center.X][-circle.Y + center.Y].symbol = newsymbol;
+		canvas[circle.Y + center.X][-circle.X + center.Y].symbol = newsymbol;
+
+		if (decision < 0) {
+			decision = decision + 4 * circle.X + 6;
+			circle.X++;
+		}
+		else {
+			decision = decision + 4 * (circle.X - circle.Y) + 10;
+			circle.X++;
+			circle.Y--;
+		}
+	}
+}
+
+//REVISED LUCAS FUNCTIONS USING STRUCTS
+
+void initial_board(Cell array[][50], char symbol)
+{
+	//move row count
+	for (int i = 0; i < 50; i++) 
+	{
+		//move column count
+		for (int j = 0; j < 50; j++)
+		{
+			array[i][j].symbol = symbol;
+			array[i][j].X = i;
+			array[i][j].Y = j;
+		}
+	}
+}
+
+
+
+void print_board(Cell array[][50])
+{
+	printf("-------------------------------------------------------------------------------------------------------\n");
+
+	for (int i = 0; i < 50; i++)
+	{
+		printf("%-2d ", i);
+		for (int j = 0; j < 50; j++)
+		{
+			printf("%-2c", array[i][j].symbol);
+		}
+		putchar('\n');
+	}
+	printf("-------------------------------------------------------------------------------------------------------\n");
 }
