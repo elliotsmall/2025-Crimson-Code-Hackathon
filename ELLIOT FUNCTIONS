@@ -143,3 +143,46 @@ void printToFile(FILE* file, Cell board[][75])
 		}
 	}
 }
+
+
+//Addition to getArrowInput to account for new inputs
+int get_arrow_input()
+{
+	//printf("Press an WASD key to move and P to place (use Q to exit):\n");
+	//initilize input
+	char input = '\0';
+
+	//Get and verify user input
+	do{
+		input = _getch();
+	} while (input != 'w' && input != 'W' && input != 'a' && input != 'A' && input != 's' && input != 'S' && input != 'd' && input != 'D' && input != 'Q' && input != 'q' && input != 'P' && input != 'p' && input != 'm' && input != 'M' && input != 'l' && input != 'L' && input != 'u' && input != 'U');
+	
+	//return a direction int
+	if (input == 'Q' || input == 'q') {
+		return 0;
+	}
+	else if (input == 'w' || input == 'W') {
+		return 1;
+	}
+	else if (input == 's' || input == 'S') {
+		return 2;
+	}
+	else if (input == 'd' || input == 'D') {
+		return 3;
+	}
+	else if (input == 'a' || input == 'A') {
+		return 4;
+	}
+	else if (input == 'p' || input == 'P') {
+		return 5;
+	}
+	else if (input == 'm' || input == 'M') {
+		return 6;
+	}
+	else if (input == 'l' || input == 'L') {
+		return 7;
+	}
+	else if (input == 'u' || input == 'U') {
+		return 8;
+	}
+}
