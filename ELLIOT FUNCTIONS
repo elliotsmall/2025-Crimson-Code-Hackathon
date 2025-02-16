@@ -109,3 +109,37 @@ else if (x == 'N' || x == 'n')
 		createLine(board, point1, point2, currentMarker);
 	}
 }
+
+//FILE Processing
+void parseFile(FILE* file, Cell board[][75])
+{
+	char line[50];
+	char* token;
+
+	while (fgets(line, sizeof(line), file) != NULL)
+	{
+		token = strtok(line, ",");
+		int x = atoi(token);
+		token = strtok(NULL, ",");
+		int y = atoi(token);
+		token = strtok(NULL, ",");
+		char symbol = token[0];
+		token = strtok(NULL, ",");
+		int color = atoi(token);
+		board[x][y].X = x;
+		board[x][y].Y = y;
+		board[x][y].symbol = symbol;
+		board[x][y].color = color;
+	}
+}
+
+void printToFile(FILE* file, Cell board[][75])
+{
+	for (int i = 0; i < 50; i++)
+	{
+		for (int j = 0; j < 75; j++)
+		{
+			fprintf(file, "%d,%d,%c,%d\n", board[i][j].X, board[i][j].Y, board[i][j].symbol, board[i][j].color);
+		}
+	}
+}
