@@ -31,23 +31,22 @@ void printInstructions()
 	system("cls");
 }
 
-void drawTriangle(int startX, int startY, int height, int width, char symbol, Cell board[][50])
+void drawTriangle(Cell center, int height, int width, Marker currentMarker, Cell board[][75])
 {
 	int point1X = 0, point1Y = 0, point2X = 0, point2Y = 0, point3X = 0, point3Y = 0; //these represent three points of the triangle
 
-	point1X = startX;
-	point1Y = startY + height / 2;
+	point1Y = center.X;
+	point1X = center.Y + height / 2;
 
-	point2X = startX - width / 2;
-	point2Y = startY - height / 2;
+	point2Y = center.X - width / 2;
+	point2X = center.Y - height / 2;
 
-	point3X = startX + width / 2;
-	point3Y = startY - height / 2;
+	point3Y = center.X + width / 2;
+	point3X = center.Y - height / 2;
 
-	drawLine(point1X, point1Y, point2X, point2Y, symbol, board);
-	drawLine(point2X, point2Y, point3X, point3Y, symbol, board);
-	drawLine(point3X, point3Y, point1X, point1Y, symbol, board);
-
+	drawLine(point1X, point1Y, point2X, point2Y, currentMarker, board);
+	drawLine(point2X, point2Y, point3X, point3Y, currentMarker, board);
+	drawLine(point3X, point3Y, point1X, point1Y, currentMarker, board);
 }
 
 void drawLine(int x0, int y0, int x1, int y1, char symbol, Cell board[][50])
