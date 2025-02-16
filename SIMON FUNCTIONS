@@ -101,3 +101,52 @@ void print_board(Cell array[][50])
 	}
 	printf("-------------------------------------------------------------------------------------------------------\n");
 }
+
+int MenuArrow() {
+
+	char input = '\0';
+
+	//Get and verify user input
+	do {
+		input = _getch();
+	} while (input != 'w' && input != 'W' && input != 's' && input != 'S' && input != 'Q' && input != 'q' && input != 'P' && input != 'p');
+
+	//return a direction int
+	if (input == 'Q' || input == 'q') {
+		return 0;
+	}
+	else if (input == 'w' || input == 'W') {
+		return 1;
+	}
+	else if (input == 's' || input == 'S') {
+		return 2;
+	}
+	else if (input == 'P' || input == 'p') {
+		return 5;
+	}
+}
+Cell moveAroundMenu(char* menu[]) {
+	int cursor = 0, position = 0;
+	int i = 0;
+	while (menu[i] != NULL) {
+		i++;
+	}
+	while (cursor != 5 && cursor != 0) {
+
+		for (int j = 0; j < i; j++) {
+			if (position = j) {
+				printf("X ");
+				printf("%s\n", menu[j]);
+			}
+			printf("(%d) ", j);
+			printf("%s\n", menu[j]);
+		}
+		int arrow = MenuArrow();
+		if (arrow == 1) {
+			position--;
+		}
+		if (arrow == 1) {
+			position++;
+		}
+	}
+}
