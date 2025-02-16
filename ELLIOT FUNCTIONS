@@ -20,12 +20,22 @@ int printMenu()
 void printInstructions()
 {
 	printf("Welcome to IMAGINAITON STATION, your new FAVORITE command line art canvas!\n");
+	printf("You will first be prompted to either add a shape, a line, or color a single cell\n");
+	printf("After answering the prompt you will choose a Marker (Key M), consisting of a symbol and color\n");
+	printf("If you choose to add a shape, you will use your cursor to find a center point, then enter other values required for the shape\n");
+	printf("If you choose to draw a line, you will choose two points with your cursor, which will then be connected\n");
+	printf("If you decide to fill a single cell, you wil use your cursor to select a singular cell\n");
+	printf("If you say no to all three prompts, then the program will finish and exit\n");
 	printf("To draw on the canvas, you can move your cursor around, by using the W, A, S, and D keys.\n");
-	printf("The inputs go as follows:\nW = Up\nA = Left\nS = Down\nD = Right\nQ = Exit\nP = Place\n");
-	printf("Once you select a cell to color, you will be given a prompt to enter a color\n");
-	printf("You also have the option to insert either a circle, square/rectangle, or triangle\n");
-	printf("If selected, you will have be able to choose a center point, and dimensions of your shape\n");
-	printf("After selecting the center and size, you will also be asked to choose a color\n");
+	printf("The inputs go as follows:\nW = Up\nA = Left\nS = Down\nD = Right\nQ = Exit\nP = Place\nM = Marker\nL = Load Canvas\nU = Upload Canvas\n");
+	printf("The colors also go as follows:\n1. Red\n2. Yellow\n3. Green\n4. Blue\n5. Light Blue\n6. Purple\n7. Black\n8. White\n9. Default\n");
+	printf("To quit the function while adding to the canvas enter Q\n");
+	printf("To place on the cell the cursor is hovering over, press P\n");
+	printf("To access your marker, press M\n");
+	printf("To load a saved canvas, press L\n");
+	printf("To upload and save a canvas, press U\n\n\n");
+	printf("THAT'S IT, NOW GO LET YOUR IMAGINATION RUN FREE\n");
+
 
 	system("pause");
 	system("cls");
