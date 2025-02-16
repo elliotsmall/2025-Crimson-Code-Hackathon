@@ -178,6 +178,23 @@ void square(Cell board[][50])
 		}
 	}
 
+
+void color(char board[][75])
+{
+	printf("Choose a color:\n");
+	printf("1. Blue\n");
+	printf("2. White\n");
+	printf("3. Black\n");
+	printf("4. Yellow\n");
+	printf("5. Red\n");
+	printf("6. Green\n");
+	printf("7. Light Blue\n");
+	printf("8. Purple\n");
+	
+
+
+}
+
 	
 
 }
