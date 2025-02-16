@@ -200,3 +200,43 @@ void color(char board[][75])
 }
 
 char* str[20] = { "Blue", "White", "Black", "Yellow", "Red", "Green", "Light Blue", "Purple" };
+
+
+
+void print_board2(Cell array[][75])
+{
+	printf("-------------------------------------------------------------------------------------------------------\n");
+
+     color(array);
+
+
+	for (int i = 0; i < 50; i++)
+	{
+		for (int j = 0; j < 75; j++)
+		{
+			if (array[i][j].symbol == '.') {
+				printf("%c ", array[i][j].symbol);
+			}
+			else
+			{
+				switch (array[50][75].color)
+				{
+				    case 1:
+					printf(BLUE "%c " RESET, array[i][j].symbol);
+					break;
+				    case 2:
+				    printf(WHITE "%c " RESET, array[i][j].symbol);
+					break;
+
+				}
+			}
+		}
+		printf("\n");
+	}
+
+	printf("-------------------------------------------------------------------------------------------------------\n");
+}
+
+
+
+
