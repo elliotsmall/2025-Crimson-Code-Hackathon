@@ -56,4 +56,128 @@ void shapes(Cell board[][50])
 
 }
 
+
+void rectangle(Cell board[][50])
+{
+	char array[30];
+
+	char symbol = '\0';
+
+	int length = 0, width = 0, center = 0, pointX = 0, pointY = 0;
+
+	printf("Enter length:");
+
+	scanf("%d", &length);
+
+	printf("Enter width:");
+
+	scanf("%d", &width);
+
+	printf("Choose the symbol:");
+
+	scanf(" %c", &symbol);
+
+	printf("Pick a point on the board to place the shape: (x,y)\n");
+
+	scanf("%d", &pointX);
+	scanf("%d", &pointY);
+
+	
+	center = length / 2;
+
+	for (int i = 0; i < length; i++)
+	{
+		if (pointY + i > 49 || pointX > 49)
+		{
+			break;
+		}
+
+		board[pointX][pointY + i].symbol = symbol;
+
+	}
+
+	for (int j = 0; j < width; j++)
+	{
+		if (pointY > 49 || pointX + j > 49)
+		{
+			break;
+		}
+
+		board[pointX + j][pointY].symbol = symbol;
+
 		
+	}
+	
+	for (int z = 0; z < length; z++)
+	{
+		if (pointY + z > 49 || pointX + width - 1 > 49)
+		{
+			break;
+		}
+
+		board[pointX + width - 1][pointY + z].symbol = symbol;
+
+		
+	}
+
+	for (int j = 0; j < width; j++)
+	{
+		if (pointY + length - 1 > 49 || pointX + j > 49)
+		{
+			break;
+		}
+
+		board[pointX + j][pointY + length - 1].symbol = symbol;
+
+		
+	}
+}
+
+
+
+void square(Cell board[][50])
+{
+	char array[30];
+
+	char symbol = '\0';
+
+	int length = 0,  centerLength = 0, pointX = 0, pointY = 0;
+
+	printf("Enter length and Width:");
+
+	scanf("%d", &length);
+
+	printf("Choose the symbol:");
+
+	scanf(" %c", &symbol);
+
+	printf("Pick a point on the board to place the shape: (x,y)\n");
+
+	scanf("%d", &pointX);
+	scanf("%d", &pointY);
+
+	int center = length / 2;
+
+	for (int i = -center; i <= center; i++) {
+		
+		for (int j = -center; j <= center; j++) 
+		{
+			int x = pointX + i;
+			
+			int y = pointY + j;
+
+			if (x >= 0 && x < 50 && y >= 0 && y < 50) {
+				
+				if (i == -center || i == center || j == -center || j == center)
+				{
+					
+					board[x][y].symbol = symbol;
+				}
+				
+			}
+		}
+	}
+
+	
+
+}
