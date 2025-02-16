@@ -186,3 +186,64 @@ int get_arrow_input()
 		return 8;
 	}
 }
+
+//Update to displayCanvas to account for new inputs
+printf("W: Up A: Left S: Down D: Right Q: Quit P: Place M: Marker L: Load Canvas U: Upload Canvas\n");
+
+//Updated function for moveAroundCanvas
+Cell move_around_canvas(Cell canvas[][75], Marker *currentMarker, int *arrow) {
+	
+	char* temp = '\0';
+	Cell cursor = { 0,0,'+' };
+	do {
+		temp = canvas[cursor.X][cursor.Y].symbol;
+		canvas[cursor.X][cursor.Y].symbol = '+';
+		print_board(canvas);
+		canvas[cursor.X][cursor.Y].symbol = temp;
+		*arrow = get_arrow_input();
+		if (*arrow == 1) {
+			cursor.X--;
+		}
+		else if (*arrow == 2) {
+			cursor.X++;
+		}
+		else if (*arrow == 3) {
+			cursor.Y++;
+		}
+		else if (*arrow == 4) {
+			cursor.Y--;
+		}
+		else if (*arrow == 6)
+		{
+			*currentMarker = setMarker();
+		}
+		else if (*arrow == 7)
+		{
+			FILE* inputStream = fopen("canvasData.csv", "r");
+			parseFile(inputStream, canvas);
+			fclose(inputStream);
+		}
+		else if (*arrow == 8)
+		{
+			FILE* outputStream = fopen("canvasData.csv", "w");
+			printToFile(outputStream, canvas);
+			fclose(outputStream);
+		}
+		system("cls");
+		if (cursor.X < 0) {
+			cursor.X = 0;
+		}
+		if (cursor.X > 49){
+			cursor.X = 49;
+		}
+		if(cursor.Y < 0) {
+			cursor.Y = 0;
+		}
+		if (cursor.Y > 74){
+			cursor.Y = 74;
+		}
+	} while (*arrow != 0 && *arrow != 5);
+
+	return cursor;
+
+}
