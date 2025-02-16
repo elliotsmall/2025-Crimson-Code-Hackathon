@@ -95,3 +95,17 @@ void createLine(Cell board[][75], Cell cursor1, Cell cursor2, Marker currentMark
 
 	drawLine(x1, y1, x2, y2, currentMarker, board);
 }
+
+//Addition this follows Y/N conditional asking about shape
+else if (x == 'N' || x == 'n')
+{
+	printf("Would you like to add a line between two points? (Y/N) ");
+	scanf(" %c", &x);
+	if (x == 'Y' || x == 'y')
+	{
+		Cell point1 = move_around_canvas(board, &currentMarker, &arrow);
+		Cell point2 = move_around_canvas(board, &currentMarker, &arrow);
+		
+		createLine(board, point1, point2, currentMarker);
+	}
+}
