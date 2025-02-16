@@ -198,3 +198,5 @@ void color(char board[][75])
 	
 
 }
+
+char* str[20] = { "Blue", "White", "Black", "Yellow", "Red", "Green", "Light Blue", "Purple" };
