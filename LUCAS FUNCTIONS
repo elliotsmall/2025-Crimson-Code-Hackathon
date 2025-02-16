@@ -1,4 +1,28 @@
-	void shapes(Cell board[][50])
+
+#define BLUE "\x1b[34;44m" 
+
+#define YELLOW "\x1b[33;43m"
+
+#define WHITE "\x1b[37;47m"
+
+#define LIGHTBLUE "\x1b[36;46m"
+
+#define PURPLE "\x1b[35;45m"
+
+#define RED "\x1b[31;41m"
+
+#define GREEN "\x1b[32;42m"
+
+#define BLACK "\x1b[30;40m"
+
+#define RESET "\x1b[0m" 
+
+***************************************************************
+Example Usage: printf(WHITE "%c " RESET, array[i][j].symbol);
+***************************************************************
+
+
+void shapes(Cell board[][50])
 {
 	char x = '\0';
 
