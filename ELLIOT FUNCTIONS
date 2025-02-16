@@ -30,3 +30,55 @@ void printInstructions()
 	system("pause");
 	system("cls");
 }
+
+void drawTriangle(int startX, int startY, int height, int width, char symbol, Cell board[][50])
+{
+	int point1X = 0, point1Y = 0, point2X = 0, point2Y = 0, point3X = 0, point3Y = 0; //these represent three points of the triangle
+
+	point1X = startX;
+	point1Y = startY + height / 2;
+
+	point2X = startX - width / 2;
+	point2Y = startY - height / 2;
+
+	point3X = startX + width / 2;
+	point3Y = startY - height / 2;
+
+	drawLine(point1X, point1Y, point2X, point2Y, symbol, board);
+	drawLine(point2X, point2Y, point3X, point3Y, symbol, board);
+	drawLine(point3X, point3Y, point1X, point1Y, symbol, board);
+
+}
+
+void drawLine(int x0, int y0, int x1, int y1, char symbol, Cell board[][50])
+{
+	int dx = abs(x1 - x0);
+	int dy = abs(y1 - y0); //absolute values of the change of x and y
+	int sx = (x0 < x1) ? 1 : -1; //determines direction for x
+	int sy = (y0 < y1) ? 1 : -1; //determines direction for y
+	int err = dx - dy;
+	
+	while (1) //infinite loop, will be broken later in the loop
+	{
+		if (x0 >= 0 && x0 < 75 && y0 >= 0 && y0 < 50)
+		{
+			board[y0][x0].symbol = symbol;
+		}
+		if (x0 == x1 && y0 == y1)
+		{
+			break; //breaks loop because endpoint has been reached
+		}
+		int e2 = 2 * err; //Double error value
+		
+		if (e2 > -dy)  // Move in x direction if needed
+		{ 
+		err -= dy;
+		x0 += sx; 
+		}
+		if (e2 < dx) // Move in y direction if needed
+		{
+			err += dx;
+			y0 += sy;
+		}
+	}
+}
